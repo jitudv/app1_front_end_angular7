@@ -1,0 +1,32 @@
+.main{
+  background-color: rgba(255, 225, 194, 1);
+  height: 1000px;
+
+}
+
+.input{
+
+ height: 40px;
+ float: left;
+ padding-left: 50px;
+ margin-top: 50px;
+ }
+
+.description{
+ float: right;
+ margin-top: 50px;
+ margin-right: 780px;
+
+}
+.comment{
+float: right;
+margin-right: 62%;
+margin-top: 0.5%;
+
+}
+.user{
+float: left;
+margin-left: 246px;
+margin-top: 5.5%;
+
+}

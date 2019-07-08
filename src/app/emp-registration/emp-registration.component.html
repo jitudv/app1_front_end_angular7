@@ -1,0 +1,129 @@
+
+   <div class="container-fluid bg">
+     <!--  registration form is started and  formGroup name is regForm-->
+    <form  class="form-horizontal" role="form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+        <h2>Registration</h2>
+        <!-- form field fof name  -->
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+            <div class="col-sm-9">
+                <input type="text"  formControlName="name"   id="firstName" placeholder="First Name" class="form-control" autofocus>
+            </div>
+        </div>
+        <!--  form field for lastname -->
+        <div class="form-group">
+            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-9">
+                <input type="text"  formControlName="lastname"  id="lastName" placeholder="Last Name" class="form-control" autofocus>
+            </div>
+        </div>
+        <!--  form field fof  email -->
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email* </label>
+            <div class="col-sm-9">
+                <input type="email"  formControlName="email"   id="email" placeholder="Email" class="form-control" name= "email">
+            </div>
+        </div>
+        <!--  form field for password enter  -->
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Password*</label>
+            <div class="col-sm-9">
+                <input type="password"  formControlName="password"  id="password" placeholder="Password" class="form-control">
+            </div>
+        </div>
+        <!-- form field for  password confirm -->
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+            <div class="col-sm-9">
+                <input type="password" formControlName="password_match"  id="password" placeholder="Password" class="form-control">
+            </div>
+        </div>
+        <!-- form field for data of birth-->
+        <div class="form-group">
+            <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>
+            <div class="col-sm-9">
+                <input type="date"  formControlName="dob"   id="birthDate" class="form-control">
+            </div>
+        </div>
+        <!-- this is the form field for phone number -->
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
+            <div class="col-sm-9">
+                <input  formControlName="mobno" type="phoneNumber" id="phoneNumber" placeholder="Phone number" class="form-control">
+                <span class="help-block">Your phone number won't be disclosed anywhere </span>
+            </div>
+        </div>
+         <!-- select department field -->
+        <div class="form-group">
+                <label for="Department" class="col-sm-3 control-label">Department </label>
+            <div class="col-sm-9">
+                <select class="form-control" id="sell" formControlName="department">
+          Department <option   *ngFor="let i of departments "  value={{i.id}}>{{i.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!--  this is pincode field -->
+         <div class="form-group">
+                <label for="pincode" class="col-sm-3 control-label">Pin Code</label>
+            <div class="col-sm-9">
+                <input  formControlName="pincode" type="text" id="pincode" placeholder="pincode" class="form-control" autofocus>
+            </div>
+        </div>
+        <!-- this is house field -->
+        <div class="form-group">
+            <label for="house" class="col-sm-3 control-label">House No.</label>
+            <div class="col-sm-9">
+                <input  formControlName="house" type="text" id="house" placeholder="House No." class="form-control" autofocus>
+            </div>
+        </div>
+
+        <!-- this is  colony field -->
+
+         <!-- this is house field -->
+         <div class="form-group">
+          <label for="colony" class="col-sm-3 control-label">Colony</label>
+          <div class="col-sm-9">
+              <input  formControlName="colony" type="text" id="house" placeholder="colony" class="form-control" autofocus>
+          </div>
+      </div>
+
+
+
+
+
+
+        <!-- city field -->
+        <div class="form-group">
+          <label for="city" class="col-sm-3 control-label">City</label>
+          <div class="col-sm-9">
+              <input formControlName="city"  type="text" id="city" placeholder="City" class="form-control" autofocus>
+          </div>
+      </div>
+      <!--  this gender field -->
+        <div class="form-group">
+            <label class="control-label col-sm-3">Gender</label>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            <input formControlName="gender" type="radio" id="femaleRadio" value="Female">Female
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                        <input  formControlName="gender"  type="radio" id="maleRadio" value="Male">Male
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /.form-group -->
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <span class="help-block">*Required fields</span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form> <!-- /form -->
+</div> <!-- ./container -->
+

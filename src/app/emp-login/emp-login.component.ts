@@ -1,0 +1,85 @@
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
+import { EmailValidator, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+
+import { Login } from 'src/models/Login';
+import { LoginLogoutService } from 'src/services/login-logout.service';
+import { fromEventPattern } from 'rxjs';
+import { log } from 'util';
+
+class Credentials {
+  // username:String
+  // password:String
+  // temp  class for  store user credentials
+  constructor(public username: string, public password: string) { } //  empty Constructor
+
+}
+
+@Component({
+  selector: 'app-emp-login',
+  templateUrl: './emp-login.component.html',
+  styleUrls: ['./emp-login.component.css']
+})
+export class EmpLoginComponent implements OnInit {
+
+  constructor(private loginlogout: LoginLogoutService) { }   // this is empty constructor
+
+  get formControls() { return this.loginForm.controls; }
+  static loginAuthentication: boolean = false
+  public static credentials: Credentials;
+  isSubmitted: boolean = false
+  loginForm: FormGroup;
+  public username:String
+  public password:String
+
+  // password: string;
+  // email: string;
+  // formControls=this.loginForm.
+
+
+
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('jitudv09@gmail.com', Validators.email),
+      password: new FormControl('Jays@123', Validators.requiredTrue),
+    })
+  }
+  public formSubmit() {
+    //alert("yes its working ")
+    EmpLoginComponent.credentials = new Credentials(this.loginForm.value.email, this.loginForm.value.password);
+    //console.log(EmpLoginComponent.credentials);
+   // console.log(this.username ,this.password);
+    this.login(EmpLoginComponent.credentials);
+
+  }
+  login(credentials: Credentials) {
+
+    // this.credentials.username = this.loginForm.value.email;
+    // this.credentials.password = this.loginForm.value.password;
+
+
+   // console.log(" this is what  we are ate the login component  login method " + credentials.password + "\t" + credentials.username)
+      this.loginlogout.userLogin(credentials.username,credentials.password).subscribe((res:HttpResponse<Object>) => {
+        console.log(res.status);
+        // you can assign the value to any variable here
+        console.log(res.headers)
+        if(res.status == 200)
+        {
+          console.log(res.status.valueOf)
+          alert("user name and password is incurrect");
+        }
+        else{
+          alert("your login is done ")
+          console.log(res.status)
+        }
+        });
+  }
+
+  loginSucess() {
+
+  }
+
+
+
+}
