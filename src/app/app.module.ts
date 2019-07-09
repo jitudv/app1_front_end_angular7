@@ -11,6 +11,7 @@ import { EmpRegistrationComponent } from './emp-registration/emp-registration.co
 import { NgModule } from '@angular/core';
 import { TaskDescComponent } from './task-desc/task-desc.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { TaskRegisterComponent } from './task-register/task-register.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     AboutComponent,
     UserPanelComponent,
     AdminPanelComponent,
-    TaskDescComponent
+    TaskDescComponent,
+    TaskRegisterComponent
   ],
   imports: [
     BrowserModule,

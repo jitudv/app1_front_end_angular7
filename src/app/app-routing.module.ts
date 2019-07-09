@@ -7,6 +7,7 @@ import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { EmpRegistrationComponent } from './emp-registration/emp-registration.component';
 import { NgModule } from '@angular/core';
 import { TaskDescComponent } from './task-desc/task-desc.component';
+import { TaskRegisterComponent } from './task-register/task-register.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:"about" ,component:AboutComponent},
   {path:"uspan",component:UserPanelComponent},
   {path:"admin" ,component:AdminPanelComponent},
-  {path:"task-desc",component:TaskDescComponent}
+  {path:"task-desc",component:TaskDescComponent},
+  {path:"taskreg",component:TaskRegisterComponent}
 
 ];
 

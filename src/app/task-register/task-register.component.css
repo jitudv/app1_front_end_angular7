@@ -1,0 +1,14 @@
+select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  width: 200px;
+  height:100px;
+   }
+  .container{
+
+   width:700px !important;
+   float:center;
+
+  }
+

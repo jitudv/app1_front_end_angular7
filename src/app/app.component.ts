@@ -2,6 +2,8 @@ import * as $ from 'jquery';
 
 import { Component, OnInit } from '@angular/core';
 
+import { AppConstant } from 'src/models/AppConstant';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'sheduleapp';
+  username:string="";
   ngOnInit(): void {
-
+    
     $("#loginLink").click(function () {
       $("#loginLink").css("color", "red");
     });

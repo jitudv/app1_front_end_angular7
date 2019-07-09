@@ -24,15 +24,15 @@ class Credentials {
 })
 export class EmpLoginComponent implements OnInit {
 
-  constructor(private loginlogout: LoginLogoutService) { }   // this is empty constructor
+  constructor(private loginlogout: LoginLogoutService, private router: Router) { }   // this is empty constructor
 
   get formControls() { return this.loginForm.controls; }
   static loginAuthentication: boolean = false
   public static credentials: Credentials;
   isSubmitted: boolean = false
   loginForm: FormGroup;
-  public username:String
-  public password:String
+  public username: String
+  public password: String
 
   // password: string;
   // email: string;
@@ -50,7 +50,7 @@ export class EmpLoginComponent implements OnInit {
     //alert("yes its working ")
     EmpLoginComponent.credentials = new Credentials(this.loginForm.value.email, this.loginForm.value.password);
     //console.log(EmpLoginComponent.credentials);
-   // console.log(this.username ,this.password);
+    // console.log(this.username ,this.password);
     this.login(EmpLoginComponent.credentials);
 
   }
@@ -60,17 +60,33 @@ export class EmpLoginComponent implements OnInit {
     // this.credentials.password = this.loginForm.value.password;
 
 
-   // console.log(" this is what  we are ate the login component  login method " + credentials.password + "\t" + credentials.username)
-      this.loginlogout.userLogin(credentials.username,credentials.password).subscribe( (res) =>
+    // console.log(" this is what  we are ate the login component  login method " + credentials.password + "\t" + credentials.username)
+    this.loginlogout.userLogin(credentials.username, credentials.password).subscribe((res) => {
+
+      const mapped = Object.keys(res).map(key => ({ type: key, value: res[key] }));  // convert an object to an array so that we can avoid errors
+
+      AppConstant.USER_NAME = mapped[2].value;
+      AppConstant.PASSWORD = mapped[1].value;
+      AppConstant.USER_ROLE = mapped[1].value;
+      // console.log("one position "+mapped[1].value)
+      // console.log("second position "+mapped[2].value)
+      // console.log("0  position"+mapped[0].value)
+
+
+      if (mapped[1].value == 'ADMIN')
       {
 
-        const mapped = Object.keys(res).map(key => ({type: key, value: res[key]}));  // convert an object to an array so that we can avoid errors
-
-      AppConstant.USER_NAME=mapped[0].value ;
-      AppConstant.PASSWORD=mapped[1].value;
-      AppConstant.USER_ROLE=mapped[2].value;
-
-        });
+        this.router.navigate(['admin']);
+      }
+      else if (mapped[1].value == "USER")
+      {
+        this.router.navigate(['uspan']);
+      }
+      else {
+        this.router.navigate(['login']);
+      }
+      // this.router.navigate(['about']);
+    });
   }
 
   loginSucess() {
