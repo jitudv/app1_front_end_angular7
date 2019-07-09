@@ -22,12 +22,21 @@ export class Employee {
      public Employee() {
          // this is empty constructor
      }
-      constructor(private name:string, private lastname:string  , private  email:string , private password:string ,private mobno:string,private dob:string , private gender:string, private empid:string )
+      constructor(private name:string, private lastname:string ,private  email:string , private password:string ,private mobno:string,private dob:string , private gender:string, private empid:string )
      {
         // this is paramitarized  constructor
      }
 
 
+    public getDob():string
+    {
+     return  this.dob;
+    }
+
+    public setDob(dob:string)
+    {
+        this.dob=dob;
+    }
     public getId(): number {
         return this.id;
     }
@@ -65,11 +74,13 @@ export class Employee {
    public setAddress(adr: Address): void {
        this.address = adr;
    }
-   public getTasks(): Object[] {
+   public getTasks(): Object[]
+    {
      return this.task;
    }
 
-   public setTask(t: Task[]) {
+   public setTask(t: Task[])
+   {
           this.task = t;
    }
 

@@ -1,12 +1,11 @@
 export class Login
  {
-   public static  username:String =" ";
-   public static  password:String =" ";
-   
-   public static initialize(uname:string ,upass:string):void
+
+   constructor(object:Object)
    {
-      Login.username=uname;
-      Login.password=upass;
+     //  this is paramitarized const
    }
+
+
 
  }

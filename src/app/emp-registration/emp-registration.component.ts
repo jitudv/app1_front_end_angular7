@@ -62,7 +62,7 @@ export class EmpRegistrationComponent implements OnInit {
     //console.log(this.regForm.value)
 
        this.address = new Address(this.regForm.value.pincode,this.regForm.value.house,this.regForm.value.city,this.regForm.value.colony);
-       this.emp = new Employee(this.regForm.value.name,this.regForm.value.lastname,this.regForm.value.email,this.regForm.value.password,this.regForm.value.mobno,"dobvalue",this.regForm.value.gender,this.regForm.value.empid);
+       this.emp = new Employee(this.regForm.value.name,this.regForm.value.lastname,this.regForm.value.email,this.regForm.value.password,this.regForm.value.mobno,this.regForm.value.dob,this.regForm.value.gender,this.regForm.value.empid);
        this.emp.setAddress(this.address);
        //console.log('value of the  employee object '+this.emp)
        //alert("yes you submit your form " + this.regForm.value.department);

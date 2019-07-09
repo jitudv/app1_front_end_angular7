@@ -2,10 +2,11 @@ import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { EmailValidator, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { config, fromEventPattern } from 'rxjs';
 
+import { AppConstant } from 'src/models/AppConstant';
 import { Login } from 'src/models/Login';
 import { LoginLogoutService } from 'src/services/login-logout.service';
-import { fromEventPattern } from 'rxjs';
 import { log } from 'util';
 
 class Credentials {
@@ -60,19 +61,15 @@ export class EmpLoginComponent implements OnInit {
 
 
    // console.log(" this is what  we are ate the login component  login method " + credentials.password + "\t" + credentials.username)
-      this.loginlogout.userLogin(credentials.username,credentials.password).subscribe((res:HttpResponse<Object>) => {
-        console.log(res.status);
-        // you can assign the value to any variable here
-        console.log(res.headers)
-        if(res.status == 200)
-        {
-          console.log(res.status.valueOf)
-          alert("user name and password is incurrect");
-        }
-        else{
-          alert("your login is done ")
-          console.log(res.status)
-        }
+      this.loginlogout.userLogin(credentials.username,credentials.password).subscribe( (res) =>
+      {
+
+        const mapped = Object.keys(res).map(key => ({type: key, value: res[key]}));  // convert an object to an array so that we can avoid errors
+
+      AppConstant.USER_NAME=mapped[0].value ;
+      AppConstant.PASSWORD=mapped[1].value;
+      AppConstant.USER_ROLE=mapped[2].value;
+
         });
   }
 
