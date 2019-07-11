@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AppConstant } from 'src/models/AppConstant';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor( private  router:Router , private cookieService:CookieService){ }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  public newTaskClick()
+  {
+
+    this.router.navigate(['taskreg'])
+    // console.log(this.cookieService.get('username'))
+    // console.log(this.cookieService.get('password'))
+
   }
-
 }

@@ -1,18 +1,17 @@
 import { Employee } from './Employee';
 
-
 export class Task{
-        
-    
-    
+
+
+
        id:number
        remark:String;
-       atComplete:Date;
+       atComplete:string;
        emps:Employee[];
        comment:Comment[];
        public Task()
        {
-           //  this is empty task 
+           //  this is empty task
        }
 
        public getId():number
@@ -22,7 +21,7 @@ export class Task{
        public setId(id:number):void{
             this.id=id;
        }
-    
+
       public getRemark():String
       {
          return this.remark;
@@ -31,13 +30,13 @@ export class Task{
           this.remark=rem;
       }
 
-      public getDateAtComplete():Date{
+      public getDateAtComplete():string{
           return this.atComplete;
       }
-      public setAtCompleteDate(date:Date):void{
+      public setAtCompleteDate(date:string):void{
           this.atComplete=date;
       }
-   
+
       public getEmployees():Employee[]
       {
           return this.emps;

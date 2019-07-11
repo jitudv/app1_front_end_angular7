@@ -1,5 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { CookieService } from 'ngx-cookie-service';
 import { Employee } from 'src/models/Employee';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class Test1serviceService {
-     constructor(private http: HttpClient) { }
+     constructor(private http: HttpClient ,private cservice:CookieService) { }
 
     baseUrl="http://localhost:8001/employee/";
 
@@ -30,14 +32,20 @@ export class Test1serviceService {
 
   public getAllEmplolyee():Observable<any>
   {
-    return this.http.get(this.baseUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(this.cservice.get('username')+ ':' +this.cservice.get('password'))
+      })
+    };
+    return this.http.get("http://localhost:8001/admin/empnameid",httpOptions);
   }
 
 
-  public saveEmployee(emp:Employee,dept:number):Observable<any>
+  public saveEmployee(emp:Employee,dept:number)
   {
     // this will  return you msg  and register  an employee  to the  server
-    console.log(emp)
+   // console.log(emp)
    return  this.http.post(this.baseUrl+dept,emp);
   }
 

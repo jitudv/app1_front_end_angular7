@@ -5,6 +5,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { config, fromEventPattern } from 'rxjs';
 
 import { AppConstant } from 'src/models/AppConstant';
+import { CookieService } from 'ngx-cookie-service';
 import { Login } from 'src/models/Login';
 import { LoginLogoutService } from 'src/services/login-logout.service';
 import { log } from 'util';
@@ -24,7 +25,7 @@ class Credentials {
 })
 export class EmpLoginComponent implements OnInit {
 
-  constructor(private loginlogout: LoginLogoutService, private router: Router) { }   // this is empty constructor
+  constructor(private loginlogout: LoginLogoutService, private router: Router , private cookieService:CookieService) { }   // this is empty constructor
 
   get formControls() { return this.loginForm.controls; }
   static loginAuthentication: boolean = false
@@ -45,6 +46,10 @@ export class EmpLoginComponent implements OnInit {
       email: new FormControl('jitudv09@gmail.com', Validators.email),
       password: new FormControl('Jays@123', Validators.requiredTrue),
     })
+
+    this.cookieService.set( 'username',"jitudv09@gmail.com");
+    this.cookieService.set('password',"Jays@123")
+
   }
   public formSubmit() {
     //alert("yes its working ")
@@ -65,12 +70,17 @@ export class EmpLoginComponent implements OnInit {
 
       const mapped = Object.keys(res).map(key => ({ type: key, value: res[key] }));  // convert an object to an array so that we can avoid errors
 
-      AppConstant.USER_NAME = mapped[2].value;
-      AppConstant.PASSWORD = mapped[1].value;
+      AppConstant.USER_NAME = mapped[0].value;
+      AppConstant.PASSWORD = mapped[2].value;
       AppConstant.USER_ROLE = mapped[1].value;
-      // console.log("one position "+mapped[1].value)
-      // console.log("second position "+mapped[2].value)
-      // console.log("0  position"+mapped[0].value)
+      // this.cookieService.set( 'username', mapped[0].value);
+      // this.cookieService.set('password',mapped[2].value)
+       console.log(this.cookieService.get('username'));
+       console.log(this.cookieService.get('password'));
+
+      // console.log(" user  role is   one position "+mapped[1].value)
+      // console.log(" user password is  second position "+mapped[2].value)
+      // console.log(" user name is  email   position "+mapped[0].value)
 
 
       if (mapped[1].value == 'ADMIN')

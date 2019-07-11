@@ -6,12 +6,13 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
 import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { EmpRegistrationComponent } from './emp-registration/emp-registration.component';
 import { NgModule } from '@angular/core';
 import { TaskDescComponent } from './task-desc/task-desc.component';
-import { UserPanelComponent } from './user-panel/user-panel.component';
 import { TaskRegisterComponent } from './task-register/task-register.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TaskRegisterComponent } from './task-register/task-register.component';
     UserPanelComponent,
     AdminPanelComponent,
     TaskDescComponent,
-    TaskRegisterComponent
+    TaskRegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,8 +32,9 @@ import { TaskRegisterComponent } from './task-register/task-register.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

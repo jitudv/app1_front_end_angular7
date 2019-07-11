@@ -23,11 +23,7 @@
 														<label for="multiple">Select Multiple User</label>
                                                        <div class="col-sm-12">
                                                         <select  id="myselect" name="myselect[]" multiple  formControlName="users">
-                                                                <option value="">green</option>
-                                                                <option value="1">green</option>
-                                                                <option value="2">green</option>
-                                                                <option value="3">green</option>
-                                                                <option value="4">blue</option>
+                                                       <option value="1" *ngFor="let  emp of  employes " value="{{emp[0][0]}}">{{emp[0][1]}}</option>
                                                         </select>
                                                     </div>
 											        		</div>

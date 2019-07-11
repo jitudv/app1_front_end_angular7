@@ -12,7 +12,8 @@ export class LoginLogoutService {
 
   constructor(private http: HttpClient) { }  // this is constructor
 
-  userLogin(username: string, password: string): Observable<Object> {
+  userLogin(username: string, password: string): Observable<Object>
+  {
 
 
     //let data1 = (btoa(username+':'+password))
