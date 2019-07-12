@@ -18,24 +18,14 @@ export class TaskRegisterComponent implements OnInit {
   constructor(private taskService: TaskServiceService, private cservice: CookieService, private empService: Test1serviceService) { }
   task = new Task()
   taskForm: FormGroup
-  employes:any
+  employes: any
+  ob:Object
   ngOnInit() {
     this.empService.getAllEmplolyee().subscribe((res) => {
-
-
-      const obj = res.reduce((o, key) => Object.assign(o, {[key]:  key }), {});
-      this.employes=res;
-    //  console.log(this.employes[0][1])
-     // console.log(obj)
-      for(var i =0; i<res.length;i++)
-       {
-        //this.employes=res[i].reduce((o, key) => Object.assign(o, {[key]:   key }), {})
-      // console.log(res[i].reduce((o, key) => Object.assign(o, {[key]:   key }), {}))
-       }
-       console.log(this.employes[0][1])
+      this.employes = res;
       })
 
-      this.taskForm = new FormGroup({
+    this.taskForm = new FormGroup({
       remark: new FormControl(''),
       completiondate: new FormControl(''),
       users: new FormControl(''),
@@ -53,6 +43,6 @@ export class TaskRegisterComponent implements OnInit {
     this.task.setRemark(this.taskForm.value.remark)
     this.taskService.addTask(this.task, this.taskForm.value.users).subscribe((res) => { console.log(res) });
 
-     }
+  }
 
 }

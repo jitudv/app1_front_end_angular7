@@ -38,7 +38,7 @@ export class Test1serviceService {
         'Authorization': 'Basic ' + btoa(this.cservice.get('username')+ ':' +this.cservice.get('password'))
       })
     };
-    return this.http.get("http://localhost:8001/admin/empnameid",httpOptions);
+    return this.http.get("http://localhost:8001/admin/employee/",httpOptions);
   }
 
 
