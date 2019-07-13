@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:"about" ,component:AboutComponent},
   {path:"uspan",component:UserPanelComponent},
   {path:"admin" ,component:AdminPanelComponent},
-  {path:"task-desc",component:TaskDescComponent},
+  {path:"taskdesk",component:TaskDescComponent},
   {path:"taskreg",component:TaskRegisterComponent}
 
 ];

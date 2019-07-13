@@ -4,6 +4,7 @@ export class AppConstant
    public static PASSWORD=" ";
    public static USER_ROLE="";
    public static SESSION_ID="";
+   public static USER_ID="";
 
 
   public static showCredintials()

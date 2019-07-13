@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Employee } from 'src/models/Employee';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,17 @@ export class Test1serviceService {
    // console.log(emp)
    return  this.http.post(this.baseUrl+dept,emp);
   }
+
+ public getTasksOfUser(id:string)
+ {
+     const httpOptions={
+     headers : new HttpHeaders({
+      'Content-Type':'application/json',
+      'Authorization':'Basic '+btoa(this.cservice.get('username')+':'+this.cservice.get('password'))
+     })
+    } // this is authorization and authentication header  for api
+   return  this.http.get("http://localhost:8001/user/task/"+id,httpOptions);
+ }
 
 
 

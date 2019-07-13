@@ -38,17 +38,13 @@ export class EmpLoginComponent implements OnInit {
   // password: string;
   // email: string;
   // formControls=this.loginForm.
-
-
-
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('jitudv09@gmail.com', Validators.email),
-      password: new FormControl('Jays@123', Validators.requiredTrue),
+      email: new FormControl('', Validators.email),
+      password: new FormControl('', Validators.requiredTrue),
     })
 
-    this.cookieService.set( 'username',"jitudv09@gmail.com");
-    this.cookieService.set('password',"Jays@123")
+
 
   }
   public formSubmit() {
@@ -73,10 +69,14 @@ export class EmpLoginComponent implements OnInit {
       AppConstant.USER_NAME = mapped[0].value;
       AppConstant.PASSWORD = mapped[2].value;
       AppConstant.USER_ROLE = mapped[1].value;
+      AppConstant.USER_ID=mapped[3].value
+      this.cookieService.set( 'username', AppConstant.USER_NAME);
+      this.cookieService.set('password',AppConstant.PASSWORD)
       // this.cookieService.set( 'username', mapped[0].value);
       // this.cookieService.set('password',mapped[2].value)
        console.log(this.cookieService.get('username'));
        console.log(this.cookieService.get('password'));
+       console.log("user id is "+mapped[3].value)
 
       // console.log(" user  role is   one position "+mapped[1].value)
       // console.log(" user password is  second position "+mapped[2].value)
