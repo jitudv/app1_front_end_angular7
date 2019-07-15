@@ -10,14 +10,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
+           </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
               <li class="header-options"> <a id="homeLink" href="/">Home</a>  </li>
               <li class="header-options"> <a id="loginLink" href="login">Login</a> </li>
               <li class="header-options"> <a  id="registrationLink" href="reg">Registration</a > </li>
               <li class="header-options"> <a  id="aboutLink" href="about">About</a>  </li>
-              <li class="header-options" style="padding-left: 60px;"> <a mat-button  (click)="logoutbt()" *ngIf="isLoggedIn">Logout</a> </li>
+              <li class="header-options" style="padding-left: 60px;"> <a mat-button  (click)="profileEdit()" *ngIf="isLoggedIn">{{username}}</a> </li>
+              <li class="header-options" style="padding-left: 30px;"> <a mat-button  (click)="logoutbt()" *ngIf="isLoggedIn">Logout</a> </li>
             </ul>
           </div>
           <!--/.nav-collapse -->
