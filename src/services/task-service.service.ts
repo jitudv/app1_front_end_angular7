@@ -25,6 +25,7 @@ export class TaskServiceService {
  public getTask(id:string):Observable<Object>
  {
    //  get the perticulra id
+   console.log("url of  task fatch from perticular user  "+TaskServiceService.BASE_URL+id)
    return this.http.get(TaskServiceService.BASE_URL+id);
  }
 

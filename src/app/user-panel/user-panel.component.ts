@@ -15,13 +15,18 @@ export class UserPanelComponent implements OnInit {
   ngOnInit() {
     this.empService.getTasksOfUser(this.cookie.get('userid')).subscribe(res => {
       this.taskList = res;
+      console.log("this is  the use id "+this.cookie.get("userid"))
       console.log(this.taskList)
     })
 
   }
 
-  public commentClick() {
-    alert("you clicked")
+  public commentClick(taskid:string) {
+    alert("you clicked"+taskid)
+  }
+
+  public taskCompleteClick(taskid:string) {
+  alert("at task complete  clicked"+taskid)
   }
 
 }

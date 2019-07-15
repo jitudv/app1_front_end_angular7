@@ -4,6 +4,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { config, fromEventPattern } from 'rxjs';
 
+import { AppComponent } from '../app.component';
 import { AppConstant } from 'src/models/AppConstant';
 import { CookieService } from 'ngx-cookie-service';
 import { Login } from 'src/models/Login';
@@ -25,7 +26,7 @@ class Credentials {
 })
 export class EmpLoginComponent implements OnInit {
 
-  constructor(private loginlogout: LoginLogoutService, private router: Router , private cookieService:CookieService) { }   // this is empty constructor
+  constructor(private apcomponent:AppComponent,private loginlogout: LoginLogoutService, private router: Router , private cookieService:CookieService) { }   // this is empty constructor
 
   get formControls() { return this.loginForm.controls; }
   static loginAuthentication: boolean = false
@@ -72,11 +73,12 @@ export class EmpLoginComponent implements OnInit {
       AppConstant.USER_ID=mapped[3].value
       this.cookieService.set( 'username', AppConstant.USER_NAME);
       this.cookieService.set('password',AppConstant.PASSWORD)
+      this.cookieService.set('userid',AppConstant.USER_ID)
       // this.cookieService.set( 'username', mapped[0].value);
       // this.cookieService.set('password',mapped[2].value)
-       console.log(this.cookieService.get('username'));
-       console.log(this.cookieService.get('password'));
-       console.log("user id is "+mapped[3].value)
+      // console.log(this.cookieService.get('username'));
+      // console.log(this.cookieService.get('password'));
+      // console.log("user id is "+mapped[3].value)
 
       // console.log(" user  role is   one position "+mapped[1].value)
       // console.log(" user password is  second position "+mapped[2].value)
@@ -85,11 +87,12 @@ export class EmpLoginComponent implements OnInit {
 
       if (mapped[1].value == 'ADMIN')
       {
-
+        this.loginSucess()
         this.router.navigate(['admin']);
       }
       else if (mapped[1].value == "USER")
       {
+        this.loginSucess()
         this.router.navigate(['uspan']);
       }
       else {
@@ -99,7 +102,13 @@ export class EmpLoginComponent implements OnInit {
     });
   }
 
-  loginSucess() {
+  loginSucess()
+  {
+    this.cookieService.set('loginstatus','true');
+    AppConstant.IS_LOGED_IN=JSON.parse(this.cookieService.get('loginstatus'))
+    console.log("login status "+AppConstant.IS_LOGED_IN)
+    this.apcomponent.updateAfterLogin();
+   // AppComponent.isLoggedIn=true;
 
   }
 

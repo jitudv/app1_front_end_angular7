@@ -58,6 +58,7 @@ export class Test1serviceService {
       'Authorization':'Basic '+btoa(this.cservice.get('username')+':'+this.cservice.get('password'))
      })
     } // this is authorization and authentication header  for api
+    console.log("url of Task for User "+"http://localhost:8001/user/task/"+id)
    return  this.http.get("http://localhost:8001/user/task/"+id,httpOptions);
  }
 

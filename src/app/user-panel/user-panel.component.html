@@ -15,8 +15,9 @@
         <td>{{task.asignDate}}</td>
         <td>{{task.atComplete}}</td>
         <td>
-          <button tupe="submit" value={{task.taskId}} class="btn btn-primary" (ngClick)="commentClick()">Comment</button>
-          <button tupe="submit" class="btn btn-danger">Show Comment</button>
+          <button type="button"  value={{task.taskId}}   class="btn btn-primary"  (click)="commentClick(task.taskId)">Comment</button>
+          <button type="button"  value={{task.taskId}}   class="btn btn-danger">Show Comment</button>
+          <button type="button"  class="btn btn-primary"  (click)="taskCompleteClick(task.taskId)">COMPLETE</button>
         </td>
      </tr>
     </table>
