@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CookieService } from 'ngx-cookie-service';
+import { TaskServiceService } from 'src/services/task-service.service';
 import { Test1serviceService } from 'src/services/employeeservice.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { Test1serviceService } from 'src/services/employeeservice.service';
 })
 export class UserPanelComponent implements OnInit {
 
-  constructor(private empService: Test1serviceService, private cookie: CookieService) { }
+  constructor(private empService: Test1serviceService, private cookie: CookieService ,private taskService:TaskServiceService ) { }
   taskList: any
   ngOnInit() {
     this.empService.getTasksOfUser(this.cookie.get('userid')).subscribe(res => {
@@ -25,8 +26,11 @@ export class UserPanelComponent implements OnInit {
     alert("you clicked"+taskid)
   }
 
-  public taskCompleteClick(taskid:string) {
-  alert("at task complete  clicked"+taskid)
+  public taskCompleteClick(taskid:string ,task:Object) {
+    this.ngOnInit();
+    this.taskService.changeTaskStatus(taskid,task).subscribe(res =>{
+    console.log("response of the task changed  service "+res)
+  })
   }
 
 }

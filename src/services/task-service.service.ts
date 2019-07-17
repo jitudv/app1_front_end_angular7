@@ -57,4 +57,16 @@ public updateTask(id:string, task:Object)
   return  this.http.put(TaskServiceService.BASE_URL+id ,task)
 }
 
+
+public  changeTaskStatus(id:string,task:Object)
+{
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(this.cservice.get('username')+ ':' +this.cservice.get('password'))
+    })
+  };
+   return  this.http.put("http://localhost:8001/user/task/updatestatus/"+id,task,httpOptions)
+}
+
 }

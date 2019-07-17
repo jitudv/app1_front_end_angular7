@@ -7,17 +7,22 @@
     <th>REMARK </th>
     <th> COMPLETE DATE </th>
     <th>  ASIGN DATE </th>
-          <th >COMMENT</th>
+          <th   style="margin-left: 36px;">STATUS</th>
+          <th  style="padding-left: 41px;">COMMENT</th>
     </tr>
     </thead>
     <tr *ngFor=" let task of taskList">
         <td>{{task.remark}}</td>
         <td>{{task.asignDate}}</td>
         <td>{{task.atComplete}}</td>
+        <td> <label style="margin-left: 15; color :blue; font-size: 20px;"  *ngIf="task.completed">comleted</label>
+          <!-- <button type="button"  class="btn btn-primary"  *ngIf="task.completed" (click)="taskCompleteClick(task.taskId,task)">COMPLETE</button> -->
+          <button type="button" style="margin-left: 15;"  class="btn btn-primary"  *ngIf="!task.completed" (click)="taskCompleteClick(task.taskId,task)">COMPLETE</button>
+        </td>
         <td>
-          <button type="button"  value={{task.taskId}}   class="btn btn-primary"  (click)="commentClick(task.taskId)">Comment</button>
-          <button type="button"  value={{task.taskId}}   class="btn btn-danger">Show Comment</button>
-          <button type="button"  class="btn btn-primary"  (click)="taskCompleteClick(task.taskId)">COMPLETE</button>
+
+          <button type="button"   style="margin-left: 36px;" value={{task.taskId}}   class="btn btn-primary"  (click)="commentClick(task.taskId)">Comment</button>
+          <button type="button"  style="margin-left: 36px;" value={{task.taskId}}   class="btn btn-danger">Show Comment</button>
         </td>
      </tr>
     </table>
