@@ -11,10 +11,9 @@ export class LoginLogoutService {
 
   static BASE_URL = "http://localhost:8001"
 
-  constructor(private http: HttpClient , private cservice:CookieService) { }  // this is constructor
+  constructor(private http: HttpClient, private cservice: CookieService) { }  // this is constructor
 
-  userLogin(username: string, password: string): Observable<Object>
-  {
+  userLogin(username: string, password: string): Observable<Object> {
 
 
     //let data1 = (btoa(username+':'+password))
@@ -30,15 +29,14 @@ export class LoginLogoutService {
   }
 
 
-  public logoutBoth():Observable<any>
-  {
-    const httpOptions={
-      headers : new HttpHeaders({
-       'Content-Type':'application/json',
-       'Authorization':'Basic '+btoa(this.cservice.get('username')+':'+this.cservice.get('password'))
+  public logoutBoth(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(this.cservice.get('username') + ':' + this.cservice.get('password'))
       })
-     }
+    }
 
-     return this.http.get("http://localhost:8001/logout/both/",httpOptions)
+    return this.http.get("http://localhost:8001/logout/both/", httpOptions)
   }
 }
