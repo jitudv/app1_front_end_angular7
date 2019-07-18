@@ -16,11 +16,17 @@ export class TaskServiceService {
   public static BASE_URL_ADMIN="http://localhost:8001/admin/task/";
   constructor(private http:HttpClient,private cservice:CookieService ) { }
 
-  public getTasks():Observable<Object>
+  public getAllTasks():Observable<Object>
   {
-    // get all the task from the server
-     return this.http.get(TaskServiceService.BASE_URL)
-  }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(this.cservice.get('username')+ ':' +this.cservice.get('password'))
+      })
+    };
+    // get all the task from the server for admin use only
+     return this.http.get("http://localhost:8001/user/task/",httpOptions)
+  }    // get all task for the perticular user
 
  public getTask(id:string):Observable<Object>
  {
@@ -48,8 +54,13 @@ export class TaskServiceService {
 
  public deleteTask(id:string):Observable<Object>
  {
-   // update the perticular task using id and sent  an task object to server
-  return  this.http.delete(TaskServiceService.BASE_URL+id)
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(this.cservice.get('username')+ ':' +this.cservice.get('password'))
+    })
+  };
+  return  this.http.delete("http://localhost:8001/admin/task/"+id ,httpOptions)
  }
 
 public updateTask(id:string, task:Object)

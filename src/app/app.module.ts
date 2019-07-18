@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { EmpRegistrationComponent } from './emp-registration/emp-registration.component';
+import { LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TaskDescComponent } from './task-desc/task-desc.component';
 import { TaskRegisterComponent } from './task-register/task-register.component';
@@ -25,6 +26,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     TaskDescComponent,
     TaskRegisterComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
 
   ],
   providers: [CookieService],

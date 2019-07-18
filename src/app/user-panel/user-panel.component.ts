@@ -28,6 +28,7 @@ export class UserPanelComponent implements OnInit {
 
   public taskCompleteClick(taskid:string ,task:Object) {
     this.ngOnInit();
+    window.location.reload();
     this.taskService.changeTaskStatus(taskid,task).subscribe(res =>{
     console.log("response of the task changed  service "+res)
   })

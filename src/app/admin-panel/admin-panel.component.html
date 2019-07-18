@@ -1,17 +1,31 @@
-<div class="main">
-   <h3 style="font-family: sans-serif; margin-top: 20%; margin-left: 4%; "> <u>User Management</u></h3>
-  <h3 style="font-family: sans-serif; margin-top: 20%; margin-left: 4%; "><u>
-    <button (click)="newTaskClick()"> assign  new task </button>
-  </u></h3>
-  </div>
-  <div class="task">
-    <input style="height: 40px; width: 700px; margin-top: 8%;" title="" type="text" name="remark" placeholder="remark-text">
-    <input style="height: 40px; width: 150px; font-size: 20px; " type ="submit" name="description" placeholder="discription"  value="update" >
-    <input style="height: 40px; width: 150px; font-size: 20px; " type ="submit" name="description" placeholder="discription"  value="delete" >
-    <div class="user">
-    <input style="height: 35px; width:100px; font-size: 15px;  " type="submit" name="" value="user">
-  </div>
-  <div class="comment">
-    <input style="height: 37px; width: 100px;  font-size: 15px; " type="submit" name="" value="comment">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+        <button class="btn btn-primary">user manegement </button><br>
+        <button (click)="newTaskClick()" class="btn btn-primary">assign new task </button>
     </div>
-  </div>
+    <div class="col-sm-6">
+     <div >
+       <table class="table table-border">
+        <thead>
+        <tr>
+
+              <th>Remark</th>
+              <th>Status</th>
+                  <th></th>
+                  <th></th>
+     </tr>
+<tr *ngFor="let task of tasks">
+<td  (click)="taskDesc(task.id)" >{{task.remark}} </td>
+<td *ngIf="task.completed" >completed</td>
+<td *ngIf="!task.completed" >Running</td>
+<td > <button  (click)="TaskUpdateButton(task.id)"   class="btn btn-primary">update</button></td>
+<td > <button (click)="deleteTaskByid(task.id)" class="btn btn-primary">delete</button></td>
+
+</tr>
+</thead>
+</table>
+</div>
+</div>
+</div>
+</div>
