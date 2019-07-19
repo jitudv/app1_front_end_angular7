@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
 import { TaskDescComponent } from './task-desc/task-desc.component';
 import { TaskRegisterComponent } from './task-register/task-register.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
     AdminPanelComponent,
     TaskDescComponent,
     TaskRegisterComponent,
+    CommentComponent,
 
 
   ],
