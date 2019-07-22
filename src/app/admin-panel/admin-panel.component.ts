@@ -4,8 +4,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { AppConstant } from 'src/models/AppConstant';
 import { BehaviorSubject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { Location } from "@angular/common";
+import { DataService } from 'src/services/data.service';
+import { Location } from '@angular/common';
 import { TaskServiceService } from 'src/services/task-service.service';
+import { Test1serviceService } from 'src/services/employeeservice.service';
 
 @Component({
   selector: 'app-admin-panel',
@@ -14,69 +16,64 @@ import { TaskServiceService } from 'src/services/task-service.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor( private location: Location , private  router:Router , private cookieService:CookieService , private taskservice:TaskServiceService){
-     // override the route reuse strategy
-
-     this.router.routeReuseStrategy.shouldReuseRoute = function(){
-      return false;
-   }
-
-   this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-         // trick the Router into believing it's last link wasn't previously loaded
-         this.router.navigated = false;
-         // if you need to scroll back to top, here is the right place
-         window.scrollTo(0, 0);
-      }
-  });
+  // tslint:disable-next-line: max-line-length
+  constructor(private dataService: DataService, private empservice: Test1serviceService, private location: Location, private router: Router, private cookieService: CookieService, private taskservice: TaskServiceService) {
   }
-  tasks:Object
+  tasks: Object
   ngOnInit() {
 
-   this.taskservice.getAllTasks().subscribe((res) =>{
-   this.tasks=res
-    console.log(res)
-    console.log("tasks load from server "+this.tasks)
-
+    this.taskservice.getAllTasks().subscribe((res) => {
+      this.tasks = res;
+      console.log(res);
+      console.log('tasks load from server ' + this.tasks);
+      // window.location.reload();
     });
-   //
+    //
   }
 
 
-  public newTaskClick()
-  {
+  public newTaskClick() {
 
-    this.router.navigate(['taskreg'])
+    this.router.navigate(['taskreg']);
     // console.log(this.cookieService.get('username'))
     // console.log(this.cookieService.get('password'))
   }
 
-  public taskDesc(id:string)
-  {
-    alert("this is task id "+id);
+  public taskDesc(id: string) {
+    alert(' this is task id ' + id);
   }
 
-  public deleteTaskByid(id:string)
-  {
-    alert('task for delete id is '+id)
+  public deleteTaskByid(id: string) {
+    alert('task for delete id is ' + id);
     this.taskservice.deleteTask(id).subscribe((res) => {
-      console.log('task deleted'+res)
+      console.log('task deleted' + res);
       this.ngOnInit();
-      this.pageRelod()
+      this.pageRelod();
 
-      });
+    });
   }
 
-  public TaskUpdateButton(task:Object ,id:string)
-  {
-    alert("task id for update the task "+id)
+  public TaskUpdateButton(id: string, task: object) {
+    alert(' task id for update the task ' + id);
+    this.dataService.setOption(task);
+
+    this.router.navigate(['updatetask']);
   }
-  public  pageRelod()
-  {
-    window.location.href="/admin"
-   // window.location.reload()
+  public pageRelod() {
+    // window.location.href = '/admin';
+    window.location.reload()
   }
 
+  public userManagement() {
+    // alert('clicked on user management ')
+    this.router.navigate(['usermanagement']);
+  }
 
+  public makeAdmin(id: string, name: string) {
+
+    this.empservice.convertAdmin(id).subscribe((res) => {
+      console.log(res);
+    });
+  }
 
 }

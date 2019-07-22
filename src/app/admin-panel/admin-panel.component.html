@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-        <button class="btn btn-primary">user manegement </button><br>
+        <button  (click)="userManagement()" class="btn btn-primary">user manegement </button><br>
         <button (click)="newTaskClick()" class="btn btn-primary">assign new task </button>
     </div>
     <div class="col-sm-6">
@@ -19,7 +19,7 @@
 <td  (click)="taskDesc(task.id)" >{{task.remark}} </td>
 <td *ngIf="task.completed" >completed</td>
 <td *ngIf="!task.completed" >Running</td>
-<td > <button  (click)="TaskUpdateButton(task.id)"   class="btn btn-primary">update</button></td>
+<td > <button  (click)="TaskUpdateButton(task.id , task )" class="btn btn-primary">update</button></td>
 <td > <button (click)="deleteTaskByid(task.id)" class="btn btn-primary">delete</button></td>
 
 </tr>

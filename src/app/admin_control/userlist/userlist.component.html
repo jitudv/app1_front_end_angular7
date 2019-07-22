@@ -10,21 +10,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+        <tr *ngFor="let emp of emps ">
+          <td>{{emp.name+"\t"+emp.lastname}}</td>
+          <td>{{emp.email}}</td>
+          <td>{{ emp.dept.name }}</td>
+          <button class="btn btn-danger"  (click)="deleteEmployee(emp.id)" >remove</button>
+          <button class="btn btn-primary">admin</button>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
-      </tbody>
+     </tbody>
     </table>
   </div>

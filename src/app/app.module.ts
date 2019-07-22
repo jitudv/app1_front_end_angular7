@@ -15,6 +15,10 @@ import { TaskDescComponent } from './task-desc/task-desc.component';
 import { TaskRegisterComponent } from './task-register/task-register.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { CommentComponent } from './comment/comment.component';
+import { UsermangementComponent } from './admin_control/usermangement/usermangement.component';
+import { DeleteuserComponent } from './admin_control/deleteuser/deleteuser.component';
+import { UserlistComponent } from './admin_control/userlist/userlist.component';
+import { TaskupdateComponent } from './admin_control/taskupdate/taskupdate.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { CommentComponent } from './comment/comment.component';
     TaskDescComponent,
     TaskRegisterComponent,
     CommentComponent,
+    UsermangementComponent,
+    DeleteuserComponent,
+    UserlistComponent,
+    TaskupdateComponent,
 
 
   ],
