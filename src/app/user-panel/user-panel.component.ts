@@ -18,14 +18,20 @@ export class UserPanelComponent implements OnInit {
   constructor(private dataservice: DataService, private empService: Test1serviceService, private cookie: CookieService, private taskService: TaskServiceService, private router: Router) { }
   public static taskid = '0';
   taskList: any;
+
+
   ngOnInit() {
-    this.empService.getTasksOfUser(this.cookie.get('userid')).subscribe(res => {
+    this.taskService.getRuuningTask(this.cookie.get('userid')).subscribe(res => {
       this.taskList = res;
       console.log('this is  the use id ' + this.cookie.get('userid'));
       console.log(this.taskList);
-    })
+    });
 
   }
+
+
+
+
 
   public commentClick(taskid: string) {
     // this.dataservice.changeMessage(taskid)
@@ -33,16 +39,23 @@ export class UserPanelComponent implements OnInit {
     // UserPanelComponent.taskid = taskid;
     this.router.navigate(['comment']);
 
-
   }
+
+
+
+
 
   // tslint:disable-next-line: ban-types
   public taskCompleteClick(taskid: string, task: Object): void {
-    this.ngOnInit();
-    window.location.reload();
+
+    // window.location.reload();
     this.taskService.changeTaskStatus(taskid, task).subscribe(res => {
       console.log('response of the task changed  service ' + res);
     });
+    this.ngOnInit();
   }
+
+
+
 
 }

@@ -7,12 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class UtilService {
 
-    public BASEURL="http://localhost:8001/"
-  constructor(private  http:HttpClient) { }
+    public BASEURL = 'http://localhost:8001/' ;
+  constructor(private  http: HttpClient) { }
 
-  public getDepartments()
-  {
-     return  this.http.get(this.BASEURL+'department');
+  public getDepartments() {
+     return  this.http.get(this.BASEURL + 'department');
   }
 
 

@@ -19,22 +19,27 @@ export class AdminPanelComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   constructor(private dataService: DataService, private empservice: Test1serviceService, private location: Location, private router: Router, private cookieService: CookieService, private taskservice: TaskServiceService) {
   }
-  tasks: Object
+
+  tasks: object;
+
+
+
+
   ngOnInit() {
 
-    this.taskservice.getAllTasks().subscribe((res) => {
+      this.taskservice.getAllTasks().subscribe((res) => {
       this.tasks = res;
       console.log(res);
       console.log('tasks load from server ' + this.tasks);
-      // window.location.reload();
-    });
-    //
+      });
   }
+
+
 
 
   public newTaskClick() {
 
-    this.router.navigate(['taskreg']);
+  this.router.navigate(['taskreg']);
     // console.log(this.cookieService.get('username'))
     // console.log(this.cookieService.get('password'))
   }
@@ -42,6 +47,8 @@ export class AdminPanelComponent implements OnInit {
   public taskDesc(id: string) {
     alert(' this is task id ' + id);
   }
+
+
 
   public deleteTaskByid(id: string) {
     alert('task for delete id is ' + id);
@@ -53,25 +60,35 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
+
+
   public TaskUpdateButton(id: string, task: object) {
     alert(' task id for update the task ' + id);
     this.dataService.setOption(task);
 
     this.router.navigate(['updatetask']);
   }
+
+
+
   public pageRelod() {
     // window.location.href = '/admin';
-    window.location.reload()
+    window.location.reload();
   }
+
+
+
 
   public userManagement() {
     // alert('clicked on user management ')
     this.router.navigate(['usermanagement']);
   }
 
-  public makeAdmin(id: string, name: string) {
 
-    this.empservice.convertAdmin(id).subscribe((res) => {
+
+
+  public makeAdmin(id: string, name: string) {
+      this.empservice.convertAdmin(id).subscribe((res) => {
       console.log(res);
     });
   }

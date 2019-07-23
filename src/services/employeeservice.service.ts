@@ -19,10 +19,10 @@ export class Test1serviceService {
     return this.http.get(this.baseUrl);
   }
 
-  getData(): Observable<Object> {
+  getData(): Observable<object> {
     return this.http.get('http://localhost:8001/employee/' + 3);
   }
-  public getDataById(id: number): Observable<Object> {
+  public getDataById(id: number): Observable<object> {
     return this.http.get('http://localhost:8001/employee/' + id);
   }
 
@@ -49,12 +49,12 @@ export class Test1serviceService {
         'Content-Type': 'application/json',
         Authorization: 'Basic ' + btoa(this.cservice.get('username') + ':' + this.cservice.get('password'))
       })
-    } // this is authorization and authentication header  for api
+    };  // this is authorization and authentication header  for api
     console.log('url of Task for User ' + 'http://localhost:8001/user/task/' + id);
     return this.http.get('http://localhost:8001/user/task/' + id, httpOptions);
   }
 
-  public deleteEmployee(id: string): Observable<Object> {
+  public deleteEmployee(id: string): Observable<object> {
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -66,8 +66,7 @@ export class Test1serviceService {
     return this.http.delete('http://localhost:8001/admin/employee/' + id, httpOptions);
   }
 
-  public convertAdmin(id: string): Observable<any>
-  {
+  public convertAdmin(id: string): Observable<any> {
 
     const httpOptions = {
       headers: new HttpHeaders({

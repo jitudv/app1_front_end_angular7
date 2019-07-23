@@ -15,14 +15,12 @@
         <td>{{task.remark}}</td>
         <td>{{task.asignDate}}</td>
         <td>{{task.atComplete}}</td>
-        <td> <label style="margin-left: 15; color :blue; font-size: 20px;"  *ngIf="task.completed">comleted</label>
+        <td> <label style="margin-left: 15; color :blue; font-size: 20px;"  *ngIf="task.completed">completed</label>
           <!-- <button type="button"  class="btn btn-primary"  *ngIf="task.completed" (click)="taskCompleteClick(task.taskId,task)">COMPLETE</button> -->
-          <button type="button" style="margin-left: 15;"  class="btn btn-primary"  *ngIf="!task.completed" (click)="taskCompleteClick(task.taskId,task)">COMPLETE</button>
+          <button type="button" style="margin-left: 15;"  class="btn btn-primary"  *ngIf="!task.completed" (click)="taskCompleteClick(task.id,task)">COMPLETE</button>
         </td>
-        <td>
-
-          <button type="button"   style="margin-left: 36px;" value={{task.taskId}}   class="btn btn-primary"  (click)="commentClick(task.taskId)">Comment</button>
-          <button type="button"  style="margin-left: 36px;" value={{task.taskId}}   class="btn btn-danger">Show Comment</button>
+         <td>
+         <button type="button"   style="margin-left: 36px;" value={{task.id}}   class="btn btn-primary"  (click)="commentClick(task.id)">Comment</button>
         </td>
      </tr>
     </table>

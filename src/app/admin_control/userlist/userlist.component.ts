@@ -9,21 +9,21 @@ import { Test1serviceService } from 'src/services/employeeservice.service';
 })
 export class UserlistComponent implements OnInit {
 
-  constructor(private empservice: Test1serviceService ) { }
+  constructor(private empservice: Test1serviceService) { }
   public emps: object;
   ngOnInit() {
 
-     this.empservice.getAllEmplolyee().subscribe((res) => {
+    this.empservice.getAllEmplolyee().subscribe((res) => {
       this.emps = res;
       console.log(this.emps);
     });
   }
 
-  public deleteEmployee(id:string)
-  {
-    this.empservice.deleteEmployee(id).subscribe(res =>{
-      console.log(res)
-;    })
+  public deleteEmployee(id: string) {
+    this.empservice.deleteEmployee(id).subscribe(res => {
+      console.log(res);
+    });
+    this.ngOnInit();
   }
 
 }
