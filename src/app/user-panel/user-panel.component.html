@@ -13,8 +13,8 @@
     </thead>
     <tr *ngFor=" let task of taskList">
         <td>{{task.remark}}</td>
-        <td>{{task.asignDate}}</td>
         <td>{{task.atComplete}}</td>
+        <td>{{task.asignDate}}</td>
         <td> <label style="margin-left: 15; color :blue; font-size: 20px;"  *ngIf="task.completed">completed</label>
           <!-- <button type="button"  class="btn btn-primary"  *ngIf="task.completed" (click)="taskCompleteClick(task.taskId,task)">COMPLETE</button> -->
           <button type="button" style="margin-left: 15;"  class="btn btn-primary"  *ngIf="!task.completed" (click)="taskCompleteClick(task.id,task)">COMPLETE</button>

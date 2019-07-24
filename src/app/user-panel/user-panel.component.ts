@@ -29,11 +29,7 @@ export class UserPanelComponent implements OnInit {
 
   }
 
-
-
-
-
-  public commentClick(taskid: string) {
+   public commentClick(taskid: string) {
     // this.dataservice.changeMessage(taskid)
     this.cookie.set('taskid', taskid);
     // UserPanelComponent.taskid = taskid;
@@ -41,18 +37,15 @@ export class UserPanelComponent implements OnInit {
 
   }
 
-
-
-
-
   // tslint:disable-next-line: ban-types
   public taskCompleteClick(taskid: string, task: Object): void {
 
     // window.location.reload();
-    this.taskService.changeTaskStatus(taskid, task).subscribe(res => {
+     this.taskService.changeTaskStatus(taskid, task).subscribe(res => {
       console.log('response of the task changed  service ' + res);
-    });
-    this.ngOnInit();
+     });
+     window.location.reload();
+     this.ngOnInit();
   }
 
 
