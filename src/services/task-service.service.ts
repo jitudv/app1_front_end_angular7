@@ -96,9 +96,6 @@ import { identifierModuleUrl } from '@angular/compiler';
   }
 
 
-
-
-
   //  it will change the task  status runnint to complited
   public changeTaskStatus(id: string, task: object)
   {
@@ -124,6 +121,25 @@ import { identifierModuleUrl } from '@angular/compiler';
       })
     };
     return this.http.get('http://localhost:8001/task/' + id , httpOptions);
+  }
+
+
+
+   // this server is  used to reasign  a task again with new dates
+   public taskReasign(taskid: string , uids: any , task: object ): Observable<object> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa(this.cservice.get('username') + ':' + this.cservice.get('password'))
+      })
+    };
+    return this.http.patch('http://localhost:8001/admin/taskreasign/' + taskid + '/' + uids + '/', task, httpOptions);
+  }
+
+  public  taskShedule(datetime: string )
+  {
+    
   }
 
 

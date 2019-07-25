@@ -8,6 +8,7 @@ import { CommentComponent } from './comment/comment.component';
 import { EmpLoginComponent } from './emp-login/emp-login.component';
 import { EmpRegistrationComponent } from './emp-registration/emp-registration.component';
 import { TaskDescComponent } from './task-desc/task-desc.component';
+import { TaskReasignComponent } from './task-reasign/task-reasign.component';
 import { TaskRegisterComponent } from './task-register/task-register.component';
 import { TaskupdateComponent } from './admin_control/taskupdate/taskupdate.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'comment',  component: CommentComponent } ,
   {path: 'usermanagement', component: UsermangementComponent},
   {path: 'updatetask', component: TaskupdateComponent},
+  {path: 'reasigntask' , component: TaskReasignComponent},
 
 ];
 

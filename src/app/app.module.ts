@@ -19,6 +19,8 @@ import { TaskupdateComponent } from './admin_control/taskupdate/taskupdate.compo
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserlistComponent } from './admin_control/userlist/userlist.component';
 import { UsermangementComponent } from './admin_control/usermangement/usermangement.component';
+import { TaskReasignComponent } from './task-reasign/task-reasign.component';
+import { SheduledtaskComponent } from './sheduledtask/sheduledtask.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { UsermangementComponent } from './admin_control/usermangement/usermangem
     DeleteuserComponent,
     UserlistComponent,
     TaskupdateComponent,
+    TaskReasignComponent,
+    SheduledtaskComponent,
 
 
 

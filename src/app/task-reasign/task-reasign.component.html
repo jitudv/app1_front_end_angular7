@@ -1,11 +1,11 @@
-
 <div class="container">
   <h1>Task Management</h1>
   <div class="panel panel-primary">
-    <div class="panel-heading">NEW TASK</div>
+    <div class="panel-heading">Reasign  TASK</div>
     <div class="panel-body">
     <div class="row">
-   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
                       <div class="col-sm-6">
                                 <div class="form-group custon-textarea no-padd-left col-sm-12">
                                         <label for="Remark">Remark</label>
@@ -13,10 +13,10 @@
                                     </div>
                               <div class="form-group col-sm-12">
                                <label>Date of completion</label>
-                               <input type="date" name="t2" class="form-control" id="" placeholder="" formControlName="completiondate" (change)="dateValidate()">
+                               <input type="date"  (change)="dateValidate()"  name="t2" class="form-control" id="" placeholder="" formControlName="completiondate">
                                      </div>
 
-                                      <div class="form-group col-sm-12">
+                                          <div class="form-group col-sm-12">
 														<label for="multiple">Select Multiple User</label>
                                                        <div class="col-sm-12">
                                                         <select  id="myselect" name="myselect[]" multiple  formControlName="users">
@@ -28,8 +28,8 @@
                                   </div>
 
 
-                              <input type="submit" class="btn btn-primary" value="submit">
-                              <input type="reset"  class="btn btn-danger"  value="reset">
+                              <input type="submit" class="btn btn-primary" value="Reasign Task ">
+
                              </form>
 
 <script>

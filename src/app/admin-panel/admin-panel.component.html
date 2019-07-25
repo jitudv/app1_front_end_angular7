@@ -1,27 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-        <button  (click)="userManagement()" class="btn btn-primary">user manegement </button><br>
-        <button (click)="newTaskClick()" class="btn btn-primary">assign new task </button>
+        <button  (click)="userManagement()" class="btn side-panel btn-primary">user manegement </button><br>
+        <button (click)="newTaskClick()" class="btn side-panel  btn-primary">assign new task </button><br>
+        <!-- <button (click)="sheduleTask();" class="btn btn-primary">shedule new task </button> -->
+        <button (click)="adminstasks()" class="btn side-panel btn-primary">task for admin </button>
     </div>
     <div class="col-sm-6">
      <div >
        <table class="table table-border">
         <thead>
         <tr>
-
               <th>Remark</th>
               <th>Status</th>
-                  <th></th>
-                  <th></th>
+              <th></th>
+              <th></th>
      </tr>
 <tr *ngFor="let task of tasks">
-<td  (click)="taskDesc(task.id)" >{{task.remark}} </td>
-<td *ngIf="task.completed" >completed</td>
-<td *ngIf="!task.completed" >Running</td>
+<td  style="color:crimson" (click)="taskDesc(task.id)" >{{task.remark}}<br>
+  <span *ngFor="let user of  task.emps;" style="color: green;"> {{ user.name}} </span>
+</td>
+<td    style="color:crimson" *ngIf="task.completed" >completed</td>
+<td    style="color:crimson"  *ngIf="!task.completed" >Running</td>
 <td > <button  (click)="TaskUpdateButton(task.id , task )" class="btn btn-primary">update</button></td>
 <td > <button (click)="deleteTaskByid(task.id)" class="btn btn-primary">delete</button></td>
-
+<td>  <button  (click)="taskReasign(task.id,task) " class="btn  btn-primary">Reasign Task </button>   </td>
 </tr>
 </thead>
 </table>

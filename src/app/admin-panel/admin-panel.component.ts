@@ -6,8 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { DataService } from 'src/services/data.service';
 import { Location } from '@angular/common';
+import { Task } from 'src/models/Task';
 import { TaskServiceService } from 'src/services/task-service.service';
 import { Test1serviceService } from 'src/services/employeeservice.service';
+import { throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-panel',
@@ -21,14 +23,13 @@ export class AdminPanelComponent implements OnInit {
   }
 
   tasks: object;
+  users:any[];
 
 
-
-
-  ngOnInit() {
-
+   ngOnInit() {
       this.taskservice.getAllTasks().subscribe((res) => {
       this.tasks = res;
+      // thi.users=this.tasks.employees;
       console.log(res);
       console.log('tasks load from server ' + this.tasks);
       });
@@ -60,9 +61,7 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-
-
-  public TaskUpdateButton(id: string, task: object) {
+ public TaskUpdateButton(id: string, task: object)  {
     alert(' task id for update the task ' + id);
     this.dataService.setOption(task);
 
@@ -71,26 +70,36 @@ export class AdminPanelComponent implements OnInit {
 
 
 
-  public pageRelod() {
+  public pageRelod()  {
     // window.location.href = '/admin';
     window.location.reload();
   }
 
-
-
-
-  public userManagement() {
+  public userManagement()  {
     // alert('clicked on user management ')
     this.router.navigate(['usermanagement']);
   }
 
-
-
-
-  public makeAdmin(id: string, name: string) {
+  public makeAdmin(id: string, name: string)  {
       this.empservice.convertAdmin(id).subscribe((res) => {
       console.log(res);
     });
+  }
+
+  public taskReasign(id: string , task: Task) {
+    alert(' task id for update the task ' + id);
+    this.dataService.setOption(task);
+    this.router.navigate(['reasigntask']);
+  }
+
+  // assign jobs for futer  activation
+  public sheduleTask() {
+
+  }
+
+  // navigate admin to his task bar
+  public adminstasks() {
+    this.router.navigate(['uspan']);
   }
 
 }

@@ -11,8 +11,10 @@
           <th  style="padding-left: 41px;">COMMENT</th>
     </tr>
     </thead>
-    <tr *ngFor=" let task of taskList">
-        <td>{{task.remark}}</td>
+     <tr *ngFor=" let task of taskList">
+        <td>{{task.remark}}
+          <br> <span *ngFor="let user of  task.emps;" style="color: green;"> {{ user.name}} </span>
+        </td>
         <td>{{task.atComplete}}</td>
         <td>{{task.asignDate}}</td>
         <td> <label style="margin-left: 15; color :blue; font-size: 20px;"  *ngIf="task.completed">completed</label>
