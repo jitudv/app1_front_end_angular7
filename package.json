@@ -22,7 +22,7 @@
     "bootstrap": "^4.3.1",
     "crypto": "^1.0.1",
     "install": "^0.12.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-base64": "^2.5.1",
     "ngx-cookie-service": "^2.2.0",
     "rxjs": "~6.4.0",
